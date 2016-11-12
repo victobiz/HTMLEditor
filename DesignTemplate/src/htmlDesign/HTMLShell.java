@@ -10,6 +10,8 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.geometry.*;
 
 
+import java.lang.StringBuffer;
+
 
 public class HTMLShell extends Application {
 	
@@ -20,6 +22,7 @@ public class HTMLShell extends Application {
 	
 	TreeItem<String> root, first;
 	TreeView<String> tree;
+	TextArea Editor;
 	
 	@Override public void start(Stage primaryStage){
 		
@@ -69,7 +72,10 @@ public class HTMLShell extends Application {
 				
 				Tab HTMLStructureTab = new Tab("HTML STRUCTURE");
 				
-					Button htmlButton = new Button("heyo button");
+					Button htmlButton = new Button("<HTML>");
+					htmlButton.setOnAction(e -> btnAdd_Clicked(htmlButton) );
+					
+					
 					HBox MainHbox = new HBox(htmlButton);
 					MainHbox.setStyle("-fx-background-color: blue;");
 					MainHbox.setMinHeight(50);
@@ -82,7 +88,12 @@ public class HTMLShell extends Application {
 				
 		//textArea
 				
-		TextArea Editor = new TextArea();
+		Editor = new TextArea();
+		Editor.setWrapText(true);
+		Editor.setPrefWidth(100);
+		Editor.setPrefHeight(100);
+		
+		
 		
 		//Footer
 		
@@ -109,4 +120,15 @@ public class HTMLShell extends Application {
 		}
 	}*/
 
+	public void btnAdd_Clicked(Button button){
+		String buttonFirst = button.getText();
+		
+		String buttonLast = new String(buttonFirst);
+		buttonLast = new StringBuffer(buttonLast).insert(1, "/").toString();
+	
+		//int x =Editor.getCaretPosition();
+		Editor.insertText(Editor.getCaretPosition(),"\n" + buttonFirst + " \n\n" + buttonLast );
+		
+	}
+	
 }
