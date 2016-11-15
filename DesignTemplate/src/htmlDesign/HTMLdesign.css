@@ -1,0 +1,25 @@
+
+
+.tab{
+	-fx-background-color: green;
+	-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+}
+
+#structure{
+	-fx-background-color: green;
+	
+}
+
+.split-menu-button  {
+    -fx-background-color: yellow ;
+}
+
+#structure.split-menu-button .arrow-button{
+	-fx-background-color: purple;
+	-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+}
+
+#structure.split-menu-button .main-button{
+	-fx-background-color: purple;
+	
+}
