@@ -68,7 +68,7 @@ public class ButtonFactory {
 		}
 		
 		/*public String getString(){
-			return this.buttonString;
+			returns this.buttonString;
 		}
 		
 	

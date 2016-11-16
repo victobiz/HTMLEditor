@@ -94,6 +94,7 @@ public class HTMLShell extends Application {
 					ButtonFactory somebutton = new ButtonFactory("<PIG>", "structure", "ACCEPT ALT");
 					SplitMenuButton pig = somebutton.getButton();
 					pig.setOnAction(e-> btnAdd_Clicked(pig)); 
+					
 					//send button to text builder
 					divButton.setOnAction(e -> btnAdd_Clicked(divButton));
 					
