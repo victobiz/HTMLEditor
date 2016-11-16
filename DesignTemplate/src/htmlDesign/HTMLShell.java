@@ -84,15 +84,21 @@ public class HTMLShell extends Application {
 					//modulate button styles
 					divButton.setId("structure");
 					
+				
+					
 					
 					//add div button attributes
 					divButton.getItems().addAll(new CheckMenuItem("attribute"), new CheckMenuItem("great"));
 					
+					
+					ButtonFactory somebutton = new ButtonFactory("<PIG>", "structure", "ACCEPT ALT");
+					SplitMenuButton pig = somebutton.getButton();
+					pig.setOnAction(e-> btnAdd_Clicked(pig)); 
 					//send button to text builder
 					divButton.setOnAction(e -> btnAdd_Clicked(divButton));
 					
 					//add buttons to HBOX On Tabpane
-					HBox MainHbox = new HBox(htmlButton, divButton);
+					HBox MainHbox = new HBox(htmlButton, divButton, pig);
 					MainHbox.setStyle("-fx-background-color: blue;");
 					MainHbox.setMinHeight(50);
 					MainHbox.setMaxHeight(50);
