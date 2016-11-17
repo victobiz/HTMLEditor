@@ -15,7 +15,7 @@ import javafx.geometry.*;
 import java.lang.StringBuffer;
 
 
-public class HTMLShell extends Application {
+public class HTMLShell extends Application implements buttonToEditorFilter {
 	
 	public static void main(String[] args)
 	{
@@ -76,31 +76,53 @@ public class HTMLShell extends Application {
 				Tab HTMLStructureTab = new Tab("HTML STRUCTURE");
 					HTMLStructureTab.setId("tab");
 					
-					Button htmlButton = new Button("<HTML>");
-					//htmlButton.setOnAction(e -> btnAdd_Clicked(htmlButton) );
-					
-					SplitMenuButton divButton = new SplitMenuButton();	
-					divButton.setText("<DIV>");
-					//modulate button styles
-					divButton.setId("structure");
-					
-				
-					
-					
-					//add div button attributes
-					divButton.getItems().addAll(new CheckMenuItem("attribute"), new CheckMenuItem("great"));
-					
-					
+					ButtonFactory style1 = new ButtonFactory("<Style>", "structure","media scoped type");
+					SplitMenuButton style = style1.getButton();
+					style.setOnAction(e-> btnAdd_Clicked(style)); 
+					/*ButtonFactory div1 = new ButtonFactory("<Div>", "structure");
+					Button div = div1.getPlain();
+					div.setOnAction(e-> btnAdd_Clicked(div)); 
+					ButtonFactory span1 = new ButtonFactory("<Span>", "structure");
+					SplitMenuButton span = span1.getButton();
+					span.setOnAction(e-> btnAdd_Clicked(span)); 
+					ButtonFactory header1 = new ButtonFactory("<Header>", "structure");
+					SplitMenuButton header = header1.getButton();
+					header.setOnAction(e-> btnAdd_Clicked(header)); 
+					ButtonFactory footer1 = new ButtonFactory("<footer>", "structure");
+					SplitMenuButton footer = footer1.getButton();
+					footer.setOnAction(e-> btnAdd_Clicked(footer)); 
+					ButtonFactory main1 = new ButtonFactory("<main>", "structure");
+					SplitMenuButton main = main1.getButton();
+					main.setOnAction(e-> btnAdd_Clicked(main)); 
+					ButtonFactory section1 = new ButtonFactory("<section>", "structure");
+					SplitMenuButton section = section1.getButton();
+					section.setOnAction(e-> btnAdd_Clicked(section)); 
+					ButtonFactory article1 = new ButtonFactory("<article>", "structure");
+					SplitMenuButton article = article1.getButton();
+					article.setOnAction(e-> btnAdd_Clicked(article)); 
+					ButtonFactory aside1 = new ButtonFactory("<aside>", "structure");
+					SplitMenuButton aside = aside1.getButton();
+					aside.setOnAction(e-> btnAdd_Clicked(aside)); 
+					//ButtonFactory details1 = new ButtonFactory("<details>", "structure","open");
+					//SplitMenuButton details = details1.getButton();
+					//details.setOnAction(e-> btnAdd_Clicked(details)); 
+					ButtonFactory dialog1 = new ButtonFactory("<dialog>", "structure");
+					SplitMenuButton dialog = dialog1.getButton();
+					dialog.setOnAction(e-> btnAdd_Clicked(dialog)); 
+					ButtonFactory summary1 = new ButtonFactory("<summary>", "structure");
+					SplitMenuButton summary = summary1.getButton();
+					summary.setOnAction(e-> btnAdd_Clicked(summary)); 
+
 					ButtonFactory somebutton = new ButtonFactory("<PIG>", "structure", "ACCEPT ALT");
 					SplitMenuButton pig = somebutton.getButton();
-					pig.setOnAction(e-> btnAdd_Clicked(pig)); 
+					pig.setOnAction(e-> btnAdd_Clicked(pig)); */
 					
 					//send button to text builder
-					divButton.setOnAction(e -> btnAdd_Clicked(divButton));
 					
+					HBox MainHbox = new HBox(style);//, div, span, header, footer, main, section, article, aside);//, details, dialog, summary);
 					//add buttons to HBOX On Tabpane
-					HBox MainHbox = new HBox(htmlButton, divButton, pig);
-					MainHbox.setStyle("-fx-background-color: blue;");
+					
+					
 					MainHbox.setMinHeight(50);
 					MainHbox.setMaxHeight(50);
 					HTMLStructureTab.setContent(MainHbox);
@@ -148,7 +170,11 @@ public class HTMLShell extends Application {
 		}
 	}*/
 
-	public void btnAdd_Clicked(SplitMenuButton button){
+	
+	//need an implements class.
+	public void btnAdd_Clicked(SplitMenuButton button) {
+		
+		
 		String buttonFirst = button.getText();
 		String attributes = "";
 				//send text to tree here
@@ -175,5 +201,18 @@ public class HTMLShell extends Application {
 		
 	
 	}
+	
+	public void btnAdd_Clicked(Button button){
+		String buttonFirst = button.getText();
+		String buttonLast = new String(buttonFirst);
+		buttonLast = new StringBuffer(buttonLast).insert(1, "/").toString();
+		
+		Editor.insertText(Editor.getCaretPosition(),"\n" + buttonFirst + " \n\n" + buttonLast /*+ getAttributes*/);
+		 //send to parser to check for last > then read to < make tree
+		
+		
+		
+	}
+	
 	
 }

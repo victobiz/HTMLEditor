@@ -2,8 +2,8 @@ package htmlDesign;
 
 public enum Atrib {
 	
-	ACCEPT, ALTACCEPT, ACCEPT_CHARSET, ACCESSKEY, ACTION, ALIGN, ALT, ASYNC, AUTOCOMPLETE, AUTOFOCUS, AUTOPLAY, AUTOSAVE,
-;
+	ACCEPT, ALTACCEPT, ACCEPT_CHARSET, ACCESSKEY, ACTION, ALIGN, ALT, ASYNC, AUTOCOMPLETE, AUTOFOCUS, AUTOPLAY, AUTOSAVE,MEDIA,SCOPED, TYPE;
+
 	
 	public String toString(){
 		switch(this){
@@ -31,6 +31,12 @@ public enum Atrib {
 			return "Auto Play";
 		case	AUTOSAVE:
 			return "Auto Save";
+		case	MEDIA:
+			return "Media";
+		case	SCOPED:
+			return "Scoped";
+		case	TYPE:
+			return "Type";	
 
 		default: return "error";
 		}

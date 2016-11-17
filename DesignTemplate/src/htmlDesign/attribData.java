@@ -22,6 +22,10 @@ public class attribData {
 		Data.put("" +Atrib.AUTOFOCUS, "The element should be automatically focused after the page loaded.");
 		Data.put("" +Atrib.AUTOPLAY, "The audio or video should play as soon as possible.");
 		Data.put("" +Atrib.AUTOSAVE, "Previous values should persist dropdowns of selectable values across page loads.");
+		
+		Data.put("" +Atrib.MEDIA, "Specifies a hint of the media for which the linked resource was designed.");
+		Data.put("" +Atrib.SCOPED, "NONE");
+		Data.put("" +Atrib.TYPE, "Defines the type of the element.");
 
 	}
 	

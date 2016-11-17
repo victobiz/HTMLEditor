@@ -53,7 +53,7 @@ public class ButtonFactory /*implements MouseListener*/ {
 			//make the string capitalized and add to split button
 			//for (String s: y){
 				for(int i = 0; i < y.length; i++){
-				y[i].toUpperCase();
+				y[i]=y[i].toUpperCase();
 				System.out.print(y);
 				String x =""+ Atrib.valueOf(y[i]);
 				
@@ -71,6 +71,10 @@ public class ButtonFactory /*implements MouseListener*/ {
 		
 		public SplitMenuButton getButton(){
 			return this.splitButton;
+		}
+		
+		public Button getPlain(){
+			return this.plainButton;
 		}
 
 		
