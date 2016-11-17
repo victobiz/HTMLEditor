@@ -1,11 +1,16 @@
 package htmlDesign;
 
+import java.util.List;
+
 import javafx.collections.ObservableList;
 //import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.input.MouseEvent;
+//import java.beans.EventHandler;
 
 
-public class ButtonFactory {
+public class ButtonFactory /*implements MouseListener*/ {
 
 	
 	private SplitMenuButton splitButton = new SplitMenuButton();
@@ -21,17 +26,17 @@ public class ButtonFactory {
 			//this.buttonString =null;
 		}
 		
-		public ButtonFactory(String big, String little){
-			this.plainButton.setText(big);
-			this.plainButton.setId(little);
+		public ButtonFactory(String id, String text){
+			this.plainButton.setText(id);
+			this.plainButton.setId(text);
 			
 			//this.setattrib
 			
 		}
 		
-		public ButtonFactory(String big, String little, String attribute){			
-			this.splitButton.setText(big);
-			this.splitButton.setId(little);	
+		public ButtonFactory(String id, String text, String attribute){			
+			this.splitButton.setText(id);
+			this.splitButton.setId(text);	
 			attributeParse(attribute);
 			//this.buttonString=makeString();
 			 
@@ -39,25 +44,26 @@ public class ButtonFactory {
 		}
 		
 		//parses input and adds checkMenuItemsToButtonList
-		private String[] attributeParse(String attribute){
+		private String[] attributeParse(String attribute) {
 			//split the string by spaces
 			
 			String[]y=attribute.split(" ");
 			System.out.println(y.length);
 			
 			//make the string capitalized and add to split button
-			for (String s: y){
-				s.toUpperCase();
-				Atrib x = Atrib.valueOf(s);
+			//for (String s: y){
+				for(int i = 0; i < y.length; i++){
+				y[i].toUpperCase();
+				System.out.print(y);
+				String x =""+ Atrib.valueOf(y[i]);
 				
-				//add items to checkMenu
-				splitButton.getItems().addAll(new CheckMenuItem("" + x));	
+				//format the checkMenus
+				MenuFormat z = new MenuFormat(x);
+				CheckMenuItem item = z.getMenuItem();
+				//add items to split menu
+				splitButton.getItems().add(item);
 			}
 			
-			for (int i= 0; i<y.length ;i++){
-				System.out.print(y[i]);
-				
-			}
 			
 			return y;
 		}
@@ -66,6 +72,10 @@ public class ButtonFactory {
 		public SplitMenuButton getButton(){
 			return this.splitButton;
 		}
+
+		
+
+		
 		
 		/*public String getString(){
 			returns this.buttonString;
